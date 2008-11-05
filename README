@@ -1,0 +1,21 @@
+= Breadcrumb List
+
+Renders a trail of breadcrumbs to the current page as an undordered list. The id and class attributes specify the HTML id and HTML class, respectively, of the containing unordered list. The boolean nolinks attribute can be specified to render breadcrumbs in plain text, without any links (useful when generating title tag).
+
+*Usage:*
+
+<pre><code><r:breadcrumb_list [nolinks="true"] [id="id"] [class="class"] /></code></pre>
+
+*Example:*
+
+<pre><code><r:breadcrumb_list id="breadcrumbs" class="inline" /></code></pre>
+
+Renders as:
+
+<pre><code>
+	<ul id="breadcrumbs" class="inline">
+		<li><a href="/">Home Page</a></li>
+		<li><a href="/child">Child</a></li>
+		<li>Current</li>
+	</u>
+</code></pre>
