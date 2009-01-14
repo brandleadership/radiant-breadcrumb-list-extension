@@ -16,13 +16,15 @@ module BreadcrumbList
     nolinks = (tag.attr['nolinks'] == 'true')
     page.ancestors.each do |ancestor|
       tag.locals.page = ancestor
-      if nolinks
-        breadcrumbs.unshift validSeparator ? separator + " " + tag.render('breadcrumb') : "" + tag.render('breadcrumb')
-      else
-        if validSeparator
-          breadcrumbs.unshift %{#{separator} <a href="#{tag.render('url')}">#{tag.render('breadcrumb')}</a>}
+      if tag.locals.page.class_name != "LanguageRedirectPage"
+        if nolinks
+          breadcrumbs.unshift validSeparator ? separator + " " + tag.render('breadcrumb') : "" + tag.render('breadcrumb')
         else
-          breadcrumbs.unshift %{<a href="#{tag.render('url')}">#{tag.render('breadcrumb')}</a>}
+          if validSeparator
+            breadcrumbs.unshift %{#{separator} <a href="#{tag.render('url')}">#{tag.render('breadcrumb')}</a>}
+          else
+            breadcrumbs.unshift %{<a href="#{tag.render('url')}">#{tag.render('breadcrumb')}</a>}
+          end
         end
       end
     end
